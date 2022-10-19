@@ -1,0 +1,31 @@
+.body{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 1rem var(--p-inline);
+    gap: 1rem;
+}
+
+.heading {
+    color: var(--text-danger);
+    width: fit-content;
+    position: relative;
+}
+
+.heading::after {
+    content: "";
+    position: absolute;
+    width: 50%;
+    height: 0.15rem;
+    border-radius: 5px;
+    bottom: -0.3rem;
+    left: 20%;
+    background-color: var(--text-danger);
+}
+
+.stats {
+    width: 100%;
+    justify-content: flex-start;
+    gap: 3rem;
+    display: flex;
+}
