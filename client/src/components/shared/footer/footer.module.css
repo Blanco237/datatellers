@@ -1,0 +1,13 @@
+.body{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-size: 0.8rem;
+    background-color: var(--bg-blue);
+    color: var(--white);
+    padding: 0.1rem 0;
+}
+
+.link{
+    color: var(--black);
+}
