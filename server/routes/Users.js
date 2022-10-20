@@ -8,7 +8,7 @@ require('dotenv').config();
 const { Users } = require('../models');
 
 //Encryption Level
-const encLevel = process.env.BCRYPT_ENC_LEVEL;
+const encLevel = parseInt(process.env.BCRYPT_ENC_LEVEL);
 
 //Secret Key
 const JWT_SECRET = process.env.JWT_SECRET;
@@ -16,21 +16,27 @@ const JWT_SECRET = process.env.JWT_SECRET;
 
 router.post('/check', async (req, res) => {
     const { token } = req.headers;
-    const decoded = await jwt.verify(token, JWT_SECRET);
-    res.json(decoded);
+    try{
+        const decoded = await jwt.verify(token, JWT_SECRET);
+        res.json(decoded);
+    }catch(e) {
+        res.status(400).json({error: "Invalid User"});
+    }
 });
 
 
 router.post('/register', async (req, res) => {
     const { password } = req.body;
     const data = req.body;
-    let hashedPassword = bcrypt.hash(password, encLevel);
+    const salt = await bcrypt.genSalt(encLevel);
+    let hashedPassword = await bcrypt.hash(password, salt);
     data.password = hashedPassword;
     try{
         await Users.create(data);
         const key = jwt.sign(JSON.stringify(data), JWT_SECRET);
         res.json(key);
     }catch(e){
+        console.error(e);
         res.status(400).json({ error: e.message });
     }
 });
@@ -50,11 +56,11 @@ router.post('/login', async (req, res) => {
             res.json(key);
         }
         else {
-            res.status(400).json({error : `Wrong password for ${username}`});
+            res.json({error : `Wrong password for ${username}`});
         }
     }
     else{
-        res.status(400).json({ error : 'User Not Found'});                                                                   
+        res.json({ error : 'User Not Found'});                                                                   
     }
 }
 );
