@@ -14,7 +14,7 @@ const db = require('./models');
 const usersRouter = require('./routes/Users');
 const recordRouter = require('./routes/Records');
 app.use('/users', usersRouter);
-app.use('/records');
+app.use('/records', recordRouter);
 
 
 const port = process.env.PORT;
