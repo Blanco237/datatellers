@@ -33,7 +33,7 @@ const Statistics = () => {
 
   return (
     <section className={styles.body}>
-        <h5 className={styles.heading}>Appointments</h5>
+        <h2 className={styles.heading}>Appointments</h2>
         <div className={styles.stats}>
             {
                 data.map((item) => {

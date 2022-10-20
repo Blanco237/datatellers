@@ -10,6 +10,7 @@
     color: var(--text-danger);
     width: fit-content;
     position: relative;
+    font-size: 1.8rem;
 }
 
 .heading::after {
@@ -28,4 +29,15 @@
     justify-content: flex-start;
     gap: 3rem;
     display: flex;
+    padding-inline: 1.5rem;
+}
+
+@media screen and (max-width: 768px) {
+    .body {
+        padding: 1rem 6vw;
+    }
+    .stats {
+        padding-inline: 0;
+        gap: 1rem;
+    }
 }

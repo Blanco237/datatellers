@@ -107,7 +107,7 @@ const Table = () => {
   const scroll = (pagination, filters, sorter, extra) => {
     if (extra.action === "paginate") {
       window.scrollTo({
-        top: 150,
+        top: 200,
         behavior: "smooth",
       });
     }
@@ -126,12 +126,14 @@ const Table = () => {
       dataIndex: "code",
       key: "code",
       ...getColumnSearchProps("code"),
+      responsive: ['lg']
     },
     {
       title: "Age",
       dataIndex: "age",
       key: "age",
       sorter: (a, b) => a.age - b.age,
+      responsive: ['lg']
     },
     {
       title: "Gender",
@@ -142,12 +144,14 @@ const Table = () => {
         { text: "Female", value: "female" },
       ],
       onFilter: (value, record) => record.gender === value,
+      responsive: ['lg']
     },
     {
       title: "Phone",
       dataIndex: "phone",
       key: "phone",
       ...getColumnSearchProps("phone"),
+      responsive: ['lg']
     },
     {
       title: "Status",
@@ -175,8 +179,8 @@ const Table = () => {
           color: `var(--${theme})`,
           padding: "0.1rem 0.15rem",
           fontWeight: "500",
-          fontSize: "0.5rem",
-          borderRadius: "7px",
+          fontSize: "0.8rem",
+          borderRadius: "10px",
           textAlign: "center",
         };
 
@@ -184,7 +188,7 @@ const Table = () => {
       },
     },
     { title: "Appointment Date", dataIndex: "appt", key: "appt", sorter: (a, b) =>  new Date(b.appt) - new Date(a.appt), },
-    { title: "Record Date", dataIndex: "record", key: "record", sorter: (a, b) =>  new Date(b.record) - new Date(a.record), },
+    { title: "Record Date", dataIndex: "record", key: "record", sorter: (a, b) =>  new Date(b.record) - new Date(a.record), responsive: ['lg'] },
   ];
 
   return (

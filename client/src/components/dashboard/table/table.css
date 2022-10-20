@@ -18,7 +18,7 @@
     display: flex; 
     flex-direction: column;
     gap: 1rem;
-    font-size: 0.6rem;
+    font-size: 1rem;
   }
   
   .ant-table .ant-table-thead, .ant-table .ant-table-thead tr {
@@ -39,44 +39,44 @@
   
   /* Name Header */
   .ant-table-thead > tr > th:first-child {
-    width: 7rem;
+    width: 8rem;
   }
   
   /* Code Header */
   .ant-table-thead > tr > th:nth-child(2) {
-    width: 6rem;
+    width: 7rem;
   }
   
   /* Age Header */
   .ant-table-thead > tr > th:nth-child(3) {
-    width: 3rem;
+    width: 5rem;
   }
   
   /* Gender Header */
   .ant-table-thead > tr > th:nth-child(4) {
-    width: 4rem;
+    width: 6rem;
   }
   
   /* Phone Header */
   .ant-table-thead > tr > th:nth-child(5) {
-    width: 8rem;
+    width: 9rem;
   }
   
   /* Status Header */
   .ant-table-thead > tr > th:nth-child(6) {
-    width: 4rem;
+    width: 6rem;
   }
   
   /* Appointment Header */
   .ant-table-thead > tr > th:nth-child(7) {
-    width: 5rem;
-    font-size: 0.5rem;
+    width: 8rem;
+    font-size: 0.8rem;
   }
   
   /* Record Header */
   .ant-table-thead > tr > th:nth-child(8) {
-    width: 5rem;
-    font-size: 0.5rem;
+    width: 8rem;
+    /* font-size: 0.8rem; */
   }
   
   .ant-table-tbody {
@@ -115,50 +115,53 @@
   
   
   /* Name Column */
-  .ant-table-tbody .ant-table-row .ant-table-cell:first-child {
-    width: 7rem;
+   .ant-table-tbody .ant-table-row .ant-table-cell:first-child {
+    width: 8rem;
     font-weight: 600;
   }
   
   /* Code Column */
-  .ant-table-tbody .ant-table-row .ant-table-cell:nth-child(2) {
-    width: 6rem;
+   .ant-table-tbody .ant-table-row .ant-table-cell:nth-child(2) {
+    width: 7rem;
   }
   
   /* Age Column */
-  .ant-table-tbody .ant-table-row .ant-table-cell:nth-child(3) {
-    width: 3rem;
+   .ant-table-tbody .ant-table-row .ant-table-cell:nth-child(3) {
+    width: 5rem;
   }
   
   /* Gender Column */
-  .ant-table-tbody .ant-table-row .ant-table-cell:nth-child(4) {
-    width: 4rem;
+   .ant-table-tbody .ant-table-row .ant-table-cell:nth-child(4) {
+    width: 6rem;
   }
   
   /* Phone Column */
-  .ant-table-tbody .ant-table-row .ant-table-cell:nth-child(5) {
-    width: 8rem;
+   .ant-table-tbody .ant-table-row .ant-table-cell:nth-child(5) {
+    width: 9rem;
   }
   
   /* Status Column */
-  .ant-table-tbody .ant-table-row .ant-table-cell:nth-child(6) {
-    width: 4rem;
+   .ant-table-tbody .ant-table-row .ant-table-cell:nth-child(6) {
+    width: 6rem;
   }
   
   /* Appointment Column */
-  .ant-table-tbody .ant-table-row .ant-table-cell:nth-child(7) {
-    width: 5rem;
+   .ant-table-tbody .ant-table-row .ant-table-cell:nth-child(7) {
+    width: 8rem;
   }
   
   /* Record Column */
-  .ant-table-tbody .ant-table-row .ant-table-cell:nth-child(8) {
-    width: 5rem;
+   .ant-table-tbody .ant-table-row .ant-table-cell:nth-child(8) {
+    width: 8rem;
   }
   
+
+
+  /* Table Pagination Overrides */
+
   .ant-table-pagination {
-   text-size-adjust: none;
    margin-top: 2rem !important;
-   font-size: 0.6rem !important;
+   font-size: 1rem;
    font-weight: 500 !important;
   }
   
@@ -166,13 +169,17 @@
     cursor: pointer;
     background-color: #ffffff !important;
     border: none !important;
+    width: 2rem !important;
+    height: 2rem !important;
   }
   
   .ant-table-pagination .ant-pagination-item {
     border-radius: 0px !important;
+ 
   }
   
   .ant-table-pagination .ant-pagination-item a{
+    margin-top: 0.2rem;
     color: var(--bg-blue);
   }
   
@@ -188,8 +195,8 @@
       background: var(--bg-gray);
       border-radius: 100%;
       aspect-ratio: 1/1;
-      width: 1rem;
-      height: 1rem;
+      width: 1.3rem;
+      height: 1.3rem;
       margin-top: 0.2rem;
       vertical-align: baseline;
       font-weight: 600;
@@ -197,25 +204,38 @@
       border: none !important;
   }
 
-
-  /* Dropdown Overrides */
-  .ant-dropdown {
-    background-color: black;
-    width: 25%;
+@media screen and (max-width: 768px) {
+  /* Status Column */
+  .ant-table-tbody .ant-table-row .ant-table-cell:nth-child(2) {
+    width: 5rem;
+  }
+    /* Status Header */
+    .ant-table-thead > tr > th:nth-child(2) {
+    width: 5rem;
   }
 
-  .ant-space {
-    width: 100%;
+    /* Appointment Header */
+    .ant-table-thead > tr > th:nth-child(3) {
+    width: 8rem;
+    font-size: 0.8rem;
+  }
+    /* Appointment Column */
+    .ant-table-tbody .ant-table-row .ant-table-cell:nth-child(3) {
+    width: 8rem;
   }
 
-  .ant-space button {
-    width: 100% !important;
-    font-size: 0.6rem;
+    /* Name Column */
+    .ant-table-tbody .ant-table-row .ant-table-cell:first-child {
+    width: 8rem;
+    font-weight: 600;
+  }
+    /* Name Header */
+    .ant-table-thead > tr > th:first-child {
+    width: 8rem;
   }
 
-  /* Tooltip Overrides */
-  .ant-tooltip-inner{
-     font-size: 0.5rem;
-    min-width: 0px !important;
-    min-height: 0px !important;
+  /*Pagination Total Text*/
+  .ant-pagination-total-text {
+    display: none;
   }
+}

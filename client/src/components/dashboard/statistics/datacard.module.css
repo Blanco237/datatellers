@@ -1,19 +1,31 @@
 .body {
     width: 30%;
-    padding: 0.3rem 0.4rem;
+    padding: 0.3rem 0.9rem;
     box-shadow: rgba(188, 188, 207, 0.425) 0px 7px 29px 0px;
     border-radius: 0 10px 0 10px;
     position: relative;
 }
 
-.body>h6{
+.title{
     color: var(--main-dark);
+}
+
+.body>h1 {
+    font-size: 1.5rem;
+    color: inherit !important;
 }
 
 .body>span {
     position: absolute;
     right: 1rem;
-    top: 7%;
-    font-size: 2rem;
-    opacity: .8;
+    top: 0;
+    font-size: 3.5rem;
+    opacity: .6;
+}
+
+@media screen and (max-width: 768px){
+    .body>span {
+        font-size: 2rem;
+        top: 40%;
+    }
 }

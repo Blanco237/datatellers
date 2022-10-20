@@ -10,8 +10,8 @@ const DataCard = ({ title, value, theme, icon }) => {
 
   return (
     <div style={themeStyle} className={styles.body}>
-      <h6>{title}</h6>
-      <h4>{value}</h4>
+      <h4 className={styles.title}>{title}</h4>
+      <h1>{value}</h1>
       <span>{icon}</span>
     </div>
   );
