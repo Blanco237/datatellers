@@ -20,37 +20,15 @@ router.post('/check', async (req, res) => {
     res.json(decoded);
 });
 
-router.post('/check/username', async (req, res) => {
-    const { username } = req.body;
-    const user = await Users.findOne({ where: { username } });
-    if (user) {
-        res.json({error: 'Username already exists'});
-    }
-    else {
-        res.json({success: 'Username is available'});
-    }
-})
-
-router.post('/check/email', async (req, res) => {
-    const { email } = req.body;
-    const user = await Users.findOne({ where: { email } });
-    if (user) {
-        res.json({error: 'Email already exists'});
-    }
-    else {
-        res.json({success: 'Email is available'});
-    }
-})
-
 
 router.post('/register', async (req, res) => {
     const { password } = req.body;
     const data = req.body;
-    let hashedPassword = await bcrypt.hash(password, encLevel);
+    let hashedPassword = bcrypt.hash(password, encLevel);
     data.password = hashedPassword;
     try{
         await Users.create(data);
-        const key = await jwt.sign(JSON.stringify(data), JWT_SECRET);
+        const key = jwt.sign(JSON.stringify(data), JWT_SECRET);
         res.json(key);
     }catch(e){
         res.status(400).json({ error: e.message });
@@ -58,26 +36,25 @@ router.post('/register', async (req, res) => {
 });
 
 router.post('/login', async (req, res) => {
-    const { email, password } = req.body;
+    const { username, password } = req.body;
     const data = await Users.findOne({
         where: {
-            email,
+            username,
         }
     });
 
     if(data){
         const match = await bcrypt.compare(password, data.password);
         if(match){
-            console.log("Passwords Match");
-            const key = await jwt.sign(JSON.stringify(data.dataValues), JWT_SECRET);
+            const key = jwt.sign(JSON.stringify(data.dataValues), JWT_SECRET);
             res.json(key);
         }
         else {
-            res.json({'error' : `Wrong password for ${email}`});
+            res.status(400).json({error : `Wrong password for ${username}`});
         }
     }
     else{
-        res.json({ "error" : 'User Not Found'});                                                                   
+        res.status(400).json({ error : 'User Not Found'});                                                                   
     }
 }
 );
