@@ -23,17 +23,29 @@ const getCode = async () => {
     return uniqueCode;
 }
 
+const formatPhoneNumber = (phone) => {
+    if(!phone) {
+        return;
+    }
+    let tPhone = phone.replace('+','');
+    if(tPhone.length > 9){
+        return tPhone.slice(3);
+    }
+    return tPhone;
+}
+
 router.post('/save', async (req, res) => {
     const data = req.body;
     data.code = await getCode();
-    console.log(data.code);
     data.firstTime = data.firstTime.toLowerCase() === "yes" ? true : false;
+    data.phone = formatPhoneNumber(data.phone);
 
     try {
         const record = await Records.create(data);
         res.json(record);
     }
     catch (e) {
+        console.error(e);
         res.status(400).json({ error: e.message });
     }
 });
@@ -56,6 +68,20 @@ router.get('/byCode/:code', async (req, res) => {
     }
     catch (e) {
         res.status(400).json({ error: e.message })
+    }
+})
+
+router.get('/status/:status', async (req, res) => {
+    const { status } = req.params;
+    try{
+        const count = await Records.count({
+            where: {
+                status
+            }
+        });
+        res.json(count);
+    }catch(e){
+        res.status(400).json({error: e.message});
     }
 })
 
