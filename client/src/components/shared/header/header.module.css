@@ -3,14 +3,22 @@
     background-color: var(--main-dark);
     display: flex;
     justify-content: flex-start;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
 .headline {
-    width: 30%;
-    padding: 0.3rem 2rem;
-    font-size: 1rem;
+    width: 25%;
+    padding: 0.5rem 2rem;
+    font-size: 1.3rem;
     background-color: var(--bg-blue);
     font-weight: 500;
     color: var(--white);
     border-bottom-right-radius: 3rem;
+}
+
+@media screen and (max-width: 768px){
+    .headline {
+        width: 50%;
+        font-size: 1rem;
+    }
 }
