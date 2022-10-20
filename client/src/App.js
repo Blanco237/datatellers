@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 
 import 'antd/dist/antd.css';
 
@@ -13,16 +14,19 @@ import UserProvider from './context/UserContext';
 const App = () => {
 
     return (
-        <>
-            <UserProvider >
+        <UserProvider >
+            <Router>
                 <Header />
-                <Login />
-                {/* <Dashboard /> */}
-                {/* <NewRecord /> */}
-                {/* <EditRecord /> */}
-                <Footer />
-            </UserProvider>
-        </>
+                <Routes>
+                    <Route path={'/'} element={<Navigate to='/dash' />} />
+                    <Route path={'/login'} element={<Login />} />
+                    <Route path={'/dash'} element={<Dashboard />} />
+                    <Route path={'/new'} element={<NewRecord />} />
+                    <Route path={'/edit'} element={<EditRecord />} />
+                </Routes>
+            </Router>
+            <Footer />
+        </UserProvider>
     )
 }
 
