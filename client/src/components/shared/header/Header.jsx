@@ -1,3 +1,4 @@
+import { LogoutOutlined } from '@ant-design/icons'
 import React from 'react'
 
 import styles from './header.module.css'
@@ -8,6 +9,10 @@ const Header = () => {
         <section className={styles.headline}>
             DrNG | PATIENTS
         </section>
+        <button>
+          <span>Logout</span> 
+          <span><LogoutOutlined /></span>
+        </button>
     </header>
   )
 }
