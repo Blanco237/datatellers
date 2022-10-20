@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import { Table as T, Button, Input, Space } from "antd";
+import { useQuery } from '@tanstack/react-query';
 
 import { SearchOutlined } from "@ant-design/icons";
 
@@ -7,11 +8,16 @@ import "./table.css";
 import styles from "./table.module.css";
 
 import dataSource, { columns } from "./data";
+import { useNavigate } from 'react-router-dom';
+import { getRecords } from "../../../api/api";
 
 const Table = () => {
   const [searchText, setSearchText] = useState("");
   const [searchedColumn, setSearchedColumn] = useState("");
   const searchInput = useRef(null);
+  const navigator = useNavigate();
+
+  const { data, isLoading } = useQuery(['records'], getRecords);
 
   const handleSearch = (selectedKeys, confirm, dataIndex) => {
     confirm();
@@ -129,10 +135,9 @@ const Table = () => {
       responsive: ['lg']
     },
     {
-      title: "Age",
-      dataIndex: "age",
-      key: "age",
-      sorter: (a, b) => a.age - b.age,
+      title: "Address",
+      dataIndex: "address",
+      key: "address",
       responsive: ['lg']
     },
     {
@@ -191,6 +196,8 @@ const Table = () => {
     { title: "Record Date", dataIndex: "record", key: "record", sorter: (a, b) =>  new Date(b.record) - new Date(a.record), responsive: ['lg'] },
   ];
 
+  
+
   return (
     <section className={styles.body}>
       <T
@@ -199,11 +206,13 @@ const Table = () => {
             onClick: (event) => {
               console.log(record);
               console.log(rowIndex);
+              navigator(`/edit/${record.code}`);
             }, // click row
           };
         }}
         onChange={scroll}
-        dataSource={dataSource}
+        dataSource={data? data : dataSource}
+        loading={isLoading}
         columns={columns}
         pagination={{
           position: ["bottomCenter"],
