@@ -38,6 +38,11 @@ export const getRecords = async () => {
     return res.data;
 }
 
+export const getRecord = async (code) => {
+    const res = await Axios.get(`/records/byCode/${code}`);
+    return res.data;
+}
+
 export const getStatusCount = async (status) => {
     const res = await Axios.get(`/records/status/${status}`);
     return res.data;
