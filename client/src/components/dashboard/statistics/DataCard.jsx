@@ -1,8 +1,13 @@
 import React from "react";
 
 import styles from './datacard.module.css'
+import { useQuery } from '@tanstack/react-query';
+import { getStatusCount } from './../../../api/api';
 
 const DataCard = ({ title, value, theme, icon }) => {
+
+  const { data, isLoading } = useQuery([title.toLowerCase()], () => getStatusCount(title.toLowerCase()));
+
   const themeStyle = {
     backgroundColor: `var(--${theme}-accent)`,
     color: `var(--${theme})`,
@@ -11,7 +16,7 @@ const DataCard = ({ title, value, theme, icon }) => {
   return (
     <div style={themeStyle} className={styles.body}>
       <h4 className={styles.title}>{title}</h4>
-      <h1>{value}</h1>
+      <h1>{isLoading? value : data}</h1>
       <span>{icon}</span>
     </div>
   );

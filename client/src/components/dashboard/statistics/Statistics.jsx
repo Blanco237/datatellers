@@ -13,7 +13,7 @@ const Statistics = () => {
             title: "Missed",
             value: 15,
             theme: "danger",
-            icon: <ExclamationCircleOutlined />
+            icon: <ExclamationCircleOutlined />,
         },
         {
             title: "Rescheduled",
