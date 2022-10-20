@@ -66,6 +66,7 @@
 @media screen and (max-width: 768px) {
     .body{
         padding: 1rem 6vw;
+        height: 100vh;
     }
     .form{
         width: 100%;
