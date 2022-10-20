@@ -6,13 +6,19 @@ import Input from "../../components/record/Input";
 import styles from "./login.module.css";
 import { loginUser } from "./../../api/api";
 import useUser from './../../hooks/useUser';
+import { useNavigate } from "react-router-dom";
+import { LoadingOutlined } from "@ant-design/icons";
 
 const Login = () => {
+
   const [formData, setFormData] = useState({});
+  const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
   const [errorState, setErrorState] = useState(false);
 
-  const { handleUser } = useUser();
+  const navigator = useNavigate();
+
+  const { refresh } = useUser();
 
   const handleChange = (e) => {
     setFormData({
@@ -24,17 +30,24 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      setLoading(true);
       const res = await loginUser(formData);
       if (res.error) {
         setErrorMessage(res.error);
         setErrorState(true);
       }
       else{
-        handleUser(res);
+        localStorage.setItem('drH-user-token', res);
+        refresh();
+        setLoading(false);
+        navigator('/dash', { replace: true });
       }
     } catch (e) {
       setErrorMessage(e.message);
       setErrorState(true);
+    }
+    finally{
+      setLoading(false);
     }
   };
 
@@ -64,7 +77,7 @@ const Login = () => {
             onChange={handleChange}
           />
         </div>
-        <button>Login</button>
+        <button disabled={loading}>{loading? <LoadingOutlined /> : "Login" }</button>
       </form>
     </main>
   );
