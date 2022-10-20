@@ -12,7 +12,10 @@ const db = require('./models');
 
 /*Router Imports*/
 const usersRouter = require('./routes/Users');
+const recordRouter = require('./routes/Records');
 app.use('/users', usersRouter);
+app.use('/records');
+
 
 const port = process.env.PORT;
 
