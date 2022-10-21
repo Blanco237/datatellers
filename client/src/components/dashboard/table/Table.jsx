@@ -1,15 +1,14 @@
 import React, { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
 import { Table as T, Button, Input, Space } from "antd";
-import { useQuery } from '@tanstack/react-query';
 
-import { ManOutlined, SearchOutlined, WomanOutlined } from "@ant-design/icons";
+import dataSource, { columns } from "./data";
+import { getRecords } from "../../../api/api";
 
 import "./table.css";
 import styles from "./table.module.css";
-
-import dataSource, { columns } from "./data";
-import { useNavigate } from 'react-router-dom';
-import { getRecords } from "../../../api/api";
+import { ManOutlined, SearchOutlined, WomanOutlined } from "@ant-design/icons";
 
 const Table = () => {
   const [searchText, setSearchText] = useState("");
@@ -17,7 +16,7 @@ const Table = () => {
   const searchInput = useRef(null);
   const navigator = useNavigate();
 
-  const { data, isLoading } = useQuery(['records'], getRecords);
+  const { data, isLoading } = useQuery(["records"], getRecords);
 
   const handleSearch = (selectedKeys, confirm, dataIndex) => {
     confirm();
@@ -132,14 +131,14 @@ const Table = () => {
       dataIndex: "code",
       key: "code",
       ...getColumnSearchProps("code"),
-      responsive: ['lg'],
-      sorter: (a, b) => (a.code > b.code ? 1 : -1)
+      responsive: ["lg"],
+      sorter: (a, b) => (a.code > b.code ? 1 : -1),
     },
     {
       title: "Address",
       dataIndex: "address",
       key: "address",
-      responsive: ['lg']
+      responsive: ["lg"],
     },
     {
       title: "Gender",
@@ -150,21 +149,25 @@ const Table = () => {
         { text: "Female", value: "female" },
       ],
       onFilter: (value, record) => record.gender === value,
-      responsive: ['lg'],
+      responsive: ["lg"],
       render: (gender) => {
         const genderObj = {
-          "male" : <ManOutlined />,
-          "female" : <WomanOutlined />
-        }
-        return <span>{gender.toUpperCase()} {genderObj[gender]}</span>;
-      }
+          male: <ManOutlined />,
+          female: <WomanOutlined />,
+        };
+        return (
+          <span>
+            {gender.toUpperCase()} {genderObj[gender]}
+          </span>
+        );
+      },
     },
     {
       title: "Phone",
       dataIndex: "phone",
       key: "phone",
       ...getColumnSearchProps("phone"),
-      responsive: ['lg']
+      responsive: ["lg"],
     },
     {
       title: "Status",
@@ -200,11 +203,20 @@ const Table = () => {
         return <p style={styles}>{status}</p>;
       },
     },
-    { title: "Appointment Date", dataIndex: "appt", key: "appt", sorter: (a, b) =>  new Date(b.appt) - new Date(a.appt), },
-    { title: "Record Date", dataIndex: "record", key: "record", sorter: (a, b) =>  new Date(b.record) - new Date(a.record), responsive: ['lg'] },
+    {
+      title: "Appointment Date",
+      dataIndex: "appt",
+      key: "appt",
+      sorter: (a, b) => new Date(b.appt) - new Date(a.appt),
+    },
+    {
+      title: "Record Date",
+      dataIndex: "record",
+      key: "record",
+      sorter: (a, b) => new Date(b.record) - new Date(a.record),
+      responsive: ["lg"],
+    },
   ];
-
-  
 
   return (
     <section className={styles.body}>
@@ -219,7 +231,7 @@ const Table = () => {
           };
         }}
         onChange={scroll}
-        dataSource={data? data : dataSource}
+        dataSource={data ? data : dataSource}
         loading={isLoading}
         columns={columns}
         pagination={{
@@ -227,7 +239,7 @@ const Table = () => {
           size: "small",
           showSizeChanger: false,
           showTotal: (total) => `${total} Patients`,
-          hideOnSinglePage: true
+          hideOnSinglePage: true,
         }}
       />
     </section>

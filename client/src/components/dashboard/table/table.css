@@ -1,236 +1,238 @@
 /* Style Overrides for Antd */
 
 .ant-table {
-    background: none !important;
-    width: 100% !important;
-  }
-  
-  .ant-table *::before, .ant-table *::after {
-    display: none;
-  }
-  
-  .ant-table-content table colgroup {
-    display: none;
-  }
-  
-  .ant-table-content table {
-    width: 100%;
-    display: flex; 
-    flex-direction: column;
-    gap: 1rem;
-    font-size: 1rem;
-  }
-  
-  .ant-table .ant-table-thead, .ant-table .ant-table-thead tr {
-    display: flex;
-    justify-content: space-between;
-    gap: 0.5rem;
-    width: 100%;
-  }
-  
-  .ant-table-thead > tr > th {
-    border-bottom: none !important;
-    padding: 0.1rem 0.3rem !important;
-    border-radius: 5px;
-    font-weight: 500;
-    vertical-align: middle;
-    background-color: white !important;
-  }
-  
-  /* Name Header */
-  .ant-table-thead > tr > th:first-child {
-    width: 8rem;
-  }
-  
-  /* Code Header */
-  .ant-table-thead > tr > th:nth-child(2) {
-    width: 7rem;
-  }
-  
-  /* Address Header */
-  .ant-table-thead > tr > th:nth-child(3) {
-    width: 7rem;
-  }
-  
-  /* Gender Header */
-  .ant-table-thead > tr > th:nth-child(4) {
-    width: 6rem;
-  }
-  
-  /* Phone Header */
-  .ant-table-thead > tr > th:nth-child(5) {
-    width: 7rem;
-  }
-  
-  /* Status Header */
-  .ant-table-thead > tr > th:nth-child(6) {
-    width: 6rem;
-  }
-  
-  /* Appointment Header */
-  .ant-table-thead > tr > th:nth-child(7) {
-    width: 8rem;
-    font-size: 0.8rem;
-  }
-  
-  /* Record Header */
-  .ant-table-thead > tr > th:nth-child(8) {
-    width: 8rem;
-    /* font-size: 0.8rem; */
-  }
-  
-  .ant-table-tbody {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    gap: 0.3rem;
-  }
-  
-  .ant-table-tbody .ant-table-row {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    gap: 0.5rem;
-    background-color: #ffffff;
-    padding: 0.2rem 0.4rem;
-    border-radius: 5px;
-    transition: all 500ms ease;
-    cursor: pointer;
-  }
+  background: none !important;
+  width: 100% !important;
+}
 
-  .ant-table-tbody .ant-table-row:hover {
-    background-color: #fafafa;
-    box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
-  }
+.ant-table *::before,
+.ant-table *::after {
+  display: none;
+}
 
-  .ant-table-tbody .ant-table-row:active {
-    box-shadow: none;
-  }
-  
-  .ant-table-tbody .ant-table-row td {
-    border-bottom: none;
-    padding: 0;
-    padding-left: 0.3rem;
-  }
-  
-  
-  /* Name Column */
-   .ant-table-tbody .ant-table-row .ant-table-cell:first-child {
-    width: 8rem;
-    font-weight: 600;
-  }
-  
-  /* Code Column */
-   .ant-table-tbody .ant-table-row .ant-table-cell:nth-child(2) {
-    width: 7rem;
-  }
-  
-  /* Address Column */
-   .ant-table-tbody .ant-table-row .ant-table-cell:nth-child(3) {
-    width: 7rem;
-  }
-  
-  /* Gender Column */
-   .ant-table-tbody .ant-table-row .ant-table-cell:nth-child(4) {
-    width: 6rem;
-  }
-  
-  /* Phone Column */
-   .ant-table-tbody .ant-table-row .ant-table-cell:nth-child(5) {
-    width: 7rem;
-  }
-  
-  /* Status Column */
-   .ant-table-tbody .ant-table-row .ant-table-cell:nth-child(6) {
-    width: 6rem;
-  }
-  
-  /* Appointment Column */
-   .ant-table-tbody .ant-table-row .ant-table-cell:nth-child(7) {
-    width: 8rem;
-  }
-  
-  /* Record Column */
-   .ant-table-tbody .ant-table-row .ant-table-cell:nth-child(8) {
-    width: 8rem;
-  }
-  
+.ant-table-content table colgroup {
+  display: none;
+}
 
+.ant-table-content table {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  font-size: 1rem;
+}
 
-  /* Table Pagination Overrides */
+.ant-table .ant-table-thead,
+.ant-table .ant-table-thead tr {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  width: 100%;
+}
 
-  .ant-table-pagination {
-   margin-top: 2rem !important;
-   font-size: 1rem;
-   font-weight: 500 !important;
-  }
-  
-  .ant-table-pagination .ant-pagination-prev, .ant-table-pagination .ant-pagination-item, .ant-table-pagination .ant-pagination-next{
-    cursor: pointer;
-    background-color: #ffffff !important;
-    border: none !important;
-    width: 2rem !important;
-    height: 2rem !important;
-  }
-  
-  .ant-table-pagination .ant-pagination-item {
-    border-radius: 0px !important;
- 
-  }
-  
-  .ant-table-pagination .ant-pagination-item a{
-    margin-top: 0.2rem;
-    color: var(--bg-blue);
-  }
-  
-  .ant-pagination-item-active {
-      background: #fff;
-      border: none !important;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-  }
-  
-  .ant-pagination-item-active a {
-      background: var(--bg-gray);
-      border-radius: 100%;
-      aspect-ratio: 1/1;
-      width: 1.3rem;
-      height: 1.3rem;
-      margin-top: 0.2rem;
-      vertical-align: baseline;
-      font-weight: 600;
-      color: #111111 !important;
-      border: none !important;
-  }
+.ant-table-thead > tr > th {
+  border-bottom: none !important;
+  padding: 0.1rem 0.3rem !important;
+  border-radius: 5px;
+  font-weight: 500;
+  vertical-align: middle;
+  background-color: white !important;
+}
+
+/* Name Header */
+.ant-table-thead > tr > th:first-child {
+  width: 8rem;
+}
+
+/* Code Header */
+.ant-table-thead > tr > th:nth-child(2) {
+  width: 7rem;
+}
+
+/* Address Header */
+.ant-table-thead > tr > th:nth-child(3) {
+  width: 7rem;
+}
+
+/* Gender Header */
+.ant-table-thead > tr > th:nth-child(4) {
+  width: 6rem;
+}
+
+/* Phone Header */
+.ant-table-thead > tr > th:nth-child(5) {
+  width: 7rem;
+}
+
+/* Status Header */
+.ant-table-thead > tr > th:nth-child(6) {
+  width: 6rem;
+}
+
+/* Appointment Header */
+.ant-table-thead > tr > th:nth-child(7) {
+  width: 8rem;
+  font-size: 0.8rem;
+}
+
+/* Record Header */
+.ant-table-thead > tr > th:nth-child(8) {
+  width: 8rem;
+  /* font-size: 0.8rem; */
+}
+
+.ant-table-tbody {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 0.3rem;
+}
+
+.ant-table-tbody .ant-table-row {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  gap: 0.5rem;
+  background-color: #ffffff;
+  padding: 0.2rem 0.4rem;
+  border-radius: 5px;
+  transition: all 500ms ease;
+  cursor: pointer;
+}
+
+.ant-table-tbody .ant-table-row:hover {
+  background-color: #fafafa;
+  box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset,
+    rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
+.ant-table-tbody .ant-table-row:active {
+  box-shadow: none;
+}
+
+.ant-table-tbody .ant-table-row td {
+  border-bottom: none;
+  padding: 0;
+  padding-left: 0.3rem;
+}
+
+/* Name Column */
+.ant-table-tbody .ant-table-row .ant-table-cell:first-child {
+  width: 8rem;
+  font-weight: 600;
+}
+
+/* Code Column */
+.ant-table-tbody .ant-table-row .ant-table-cell:nth-child(2) {
+  width: 7rem;
+}
+
+/* Address Column */
+.ant-table-tbody .ant-table-row .ant-table-cell:nth-child(3) {
+  width: 7rem;
+}
+
+/* Gender Column */
+.ant-table-tbody .ant-table-row .ant-table-cell:nth-child(4) {
+  width: 6rem;
+}
+
+/* Phone Column */
+.ant-table-tbody .ant-table-row .ant-table-cell:nth-child(5) {
+  width: 7rem;
+}
+
+/* Status Column */
+.ant-table-tbody .ant-table-row .ant-table-cell:nth-child(6) {
+  width: 6rem;
+}
+
+/* Appointment Column */
+.ant-table-tbody .ant-table-row .ant-table-cell:nth-child(7) {
+  width: 8rem;
+}
+
+/* Record Column */
+.ant-table-tbody .ant-table-row .ant-table-cell:nth-child(8) {
+  width: 8rem;
+}
+
+/* Table Pagination Overrides */
+
+.ant-table-pagination {
+  margin-top: 2rem !important;
+  font-size: 1rem;
+  font-weight: 500 !important;
+}
+
+.ant-table-pagination .ant-pagination-prev,
+.ant-table-pagination .ant-pagination-item,
+.ant-table-pagination .ant-pagination-next {
+  cursor: pointer;
+  background-color: #ffffff !important;
+  border: none !important;
+  width: 2rem !important;
+  height: 2rem !important;
+}
+
+.ant-table-pagination .ant-pagination-item {
+  border-radius: 0px !important;
+}
+
+.ant-table-pagination .ant-pagination-item a {
+  margin-top: 0.2rem;
+  color: var(--bg-blue);
+}
+
+.ant-pagination-item-active {
+  background: #fff;
+  border: none !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ant-pagination-item-active a {
+  background: var(--bg-gray);
+  border-radius: 100%;
+  aspect-ratio: 1/1;
+  width: 1.3rem;
+  height: 1.3rem;
+  margin-top: 0.2rem;
+  vertical-align: baseline;
+  font-weight: 600;
+  color: #111111 !important;
+  border: none !important;
+}
 
 @media screen and (max-width: 768px) {
   /* Status Column */
   .ant-table-tbody .ant-table-row .ant-table-cell:nth-child(2) {
     width: 5rem;
   }
-    /* Status Header */
-    .ant-table-thead > tr > th:nth-child(2) {
+  /* Status Header */
+  .ant-table-thead > tr > th:nth-child(2) {
     width: 5rem;
   }
 
-    /* Appointment Header */
-    .ant-table-thead > tr > th:nth-child(3) {
+  /* Appointment Header */
+  .ant-table-thead > tr > th:nth-child(3) {
     width: 8rem;
     font-size: 0.8rem;
   }
-    /* Appointment Column */
-    .ant-table-tbody .ant-table-row .ant-table-cell:nth-child(3) {
+  /* Appointment Column */
+  .ant-table-tbody .ant-table-row .ant-table-cell:nth-child(3) {
     width: 8rem;
   }
 
-    /* Name Column */
-    .ant-table-tbody .ant-table-row .ant-table-cell:first-child {
+  /* Name Column */
+  .ant-table-tbody .ant-table-row .ant-table-cell:first-child {
     width: 8rem;
     font-weight: 600;
   }
-    /* Name Header */
-    .ant-table-thead > tr > th:first-child {
+  /* Name Header */
+  .ant-table-thead > tr > th:first-child {
     width: 8rem;
   }
 

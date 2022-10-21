@@ -1,13 +1,13 @@
-import React, { useEffect } from "react";
-
-import styles from "./dash.module.css";
+import React from "react";
+import { Navigate, useNavigate } from "react-router-dom";
+import { Tooltip } from "antd";
 
 import Statistics from "../../components/dashboard/statistics/Statistics";
 import Table from "../../components/dashboard/table/Table";
-import { PlusOutlined } from "@ant-design/icons";
-import { Tooltip } from "antd";
 import useUser from "./../../hooks/useUser";
-import { Navigate, useNavigate } from "react-router-dom";
+
+import styles from "./dash.module.css";
+import { PlusOutlined } from "@ant-design/icons";
 
 const Dashboard = () => {
   const { user } = useUser();

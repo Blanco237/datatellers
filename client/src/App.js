@@ -10,6 +10,7 @@ import Dashboard from './pages/dashboard/Dashboard';
 import NewRecord from './pages/record/NewRecord';
 import EditRecord from './pages/record/EditRecord';
 import Login from './pages/login/Login';
+
 import UserProvider from './context/UserContext';
 
 const App = () => {

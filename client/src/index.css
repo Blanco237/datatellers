@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
 
-:root{
+:root {
   --bg-gray: #eeeae7;
   --bg-blue: #5e92a7;
   --danger-accent: #eececf;
@@ -30,7 +30,7 @@ html {
 body {
   margin: 0;
   background-color: var(--bg-gray) !important;
-  font-family: 'DM Sans', sans-serif;
+  font-family: "DM Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   padding: 0;

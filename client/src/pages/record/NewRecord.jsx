@@ -1,26 +1,27 @@
-import { Alert, Divider } from "antd";
 import React, { useState, useEffect } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
+import { Alert, Divider } from "antd";
+
 import Address from "../../components/record/address/Address";
 import Appointment from "../../components/record/appointment/Appointment";
 import General from "../../components/record/general/General";
+import Notes from "./../../components/record/notes/Notes";
+import useUser from "./../../hooks/useUser";
+import { saveRecord } from "./../../api/api";
 
 import styles from "./record.module.css";
-import Notes from "./../../components/record/notes/Notes";
 import { ArrowLeftOutlined, LoadingOutlined } from "@ant-design/icons";
-import useUser from "./../../hooks/useUser";
-import { Navigate, useNavigate } from "react-router-dom";
-import { saveRecord } from './../../api/api';
 
 const NewRecord = () => {
   const [formData, setFormData] = useState({
     firstTime: "yes",
     status: "pending",
-    gender: "male"
+    gender: "male",
   });
   const [filled, setFilled] = useState(false);
   const [message, setMessage] = useState(null);
   const [type, setType] = useState(null);
-  const [loading, setLoading]= useState(false);
+  const [loading, setLoading] = useState(false);
 
   const { user } = useUser();
   const navigator = useNavigate();
@@ -28,10 +29,10 @@ const NewRecord = () => {
   useEffect(() => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth'
-    })
-    if(!user) {
-      navigator('/login');
+      behavior: "smooth",
+    });
+    if (!user) {
+      navigator("/login");
     }
   }, []);
 
@@ -40,7 +41,7 @@ const NewRecord = () => {
   }
 
   const handleChange = (e) => {
-    if(!filled){
+    if (!filled) {
       setFilled(true);
     }
     setFormData({
@@ -51,31 +52,30 @@ const NewRecord = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try{
+    try {
       setLoading(true);
       const res = await saveRecord(formData);
-      if(res.error){
+      if (res.error) {
         setMessage(res.error);
-        setType('error');
-      }else{
+        setType("error");
+      } else {
         setFormData({
           firstTime: "yes",
           status: "pending",
-          gender: "male"
+          gender: "male",
         });
         setMessage("Record Saved");
-        setType('success');
+        setType("success");
       }
       setLoading(false);
       window.scrollTo({
-        top: 0, 
-        behavior: 'smooth'
-      })
-    }catch(e) {
+        top: 0,
+        behavior: "smooth",
+      });
+    } catch (e) {
       setMessage(e.message);
-      setType('error');
-    }
-    finally{
+      setType("error");
+    } finally {
       setLoading(false);
       e.target.reset();
       setFilled(false);
@@ -83,23 +83,25 @@ const NewRecord = () => {
   };
 
   const goBack = () => {
-    if(filled){
-      const res = window.confirm("Are you sure you want to abandon current Record?");
-      if(res){
+    if (filled) {
+      const res = window.confirm(
+        "Are you sure you want to abandon current Record?"
+      );
+      if (res) {
         navigator(-1);
       }
       return;
     }
 
     navigator(-1);
-  }
+  };
 
   return (
     <main className={styles.body}>
       <section className={styles.header}>
         <h1>New Record</h1>
         <div className={styles.divider}></div>
-        {type && <Alert message={message} type={type} showIcon closable  />}
+        {type && <Alert message={message} type={type} showIcon closable />}
       </section>
       <form className={styles.form} onSubmit={handleSubmit}>
         <General onChange={handleChange} />
@@ -111,7 +113,9 @@ const NewRecord = () => {
         <Notes onChange={handleChange} />
         <Divider />
         <section className={styles.save}>
-          <button disabled={loading}>{loading? <LoadingOutlined /> : "Save" }</button>
+          <button disabled={loading}>
+            {loading ? <LoadingOutlined /> : "Save"}
+          </button>
         </section>
       </form>
       <button className={styles.return} onClick={goBack}>

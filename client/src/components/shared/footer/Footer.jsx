@@ -7,7 +7,12 @@ const Footer = () => {
     <footer className={styles.body}>
       <p>
         Built By{" "}
-        <a href="https://github.com/Blanco237" rel="noreferrer" target="_blank" className={styles.link}>
+        <a
+          href="https://github.com/Blanco237"
+          rel="noreferrer"
+          target="_blank"
+          className={styles.link}
+        >
           Blanco237
         </a>{" "}
         for{" "}

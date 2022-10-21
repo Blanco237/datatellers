@@ -1,46 +1,46 @@
-.body{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    padding: 1rem var(--p-inline);
-    gap: 1rem;
+.body {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 1rem var(--p-inline);
+  gap: 1rem;
 }
 
 .heading {
-    color: var(--text-danger);
-    width: fit-content;
-    position: relative;
-    font-size: 1.8rem;
+  color: var(--text-danger);
+  width: fit-content;
+  position: relative;
+  font-size: 1.8rem;
 }
 
 .heading::after {
-    content: "";
-    position: absolute;
-    width: 50%;
-    height: 0.15rem;
-    border-radius: 5px;
-    bottom: -0.3rem;
-    left: 20%;
-    background-color: var(--text-danger);
+  content: "";
+  position: absolute;
+  width: 50%;
+  height: 0.15rem;
+  border-radius: 5px;
+  bottom: -0.3rem;
+  left: 20%;
+  background-color: var(--text-danger);
 }
 
 .stats {
-    width: 100%;
-    justify-content: flex-start;
-    gap: 3rem;
-    display: flex;
-    padding-inline: 1.5rem;
+  width: 100%;
+  justify-content: flex-start;
+  gap: 3rem;
+  display: flex;
+  padding-inline: 1.5rem;
 }
 
 @media screen and (max-width: 768px) {
-    .body {
-        padding: 1rem 6vw;
-    }
-    .stats {
-        padding-inline: 0;
-        gap: 1rem;
-    }
-    .heading{
-        font-size: 1.5rem;
-    }
+  .body {
+    padding: 1rem 6vw;
+  }
+  .stats {
+    padding-inline: 0;
+    gap: 1rem;
+  }
+  .heading {
+    font-size: 1.5rem;
+  }
 }

@@ -1,14 +1,14 @@
-.body{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    font-size: 1.1rem;
-    background-color: var(--bg-blue);
-    color: var(--white);
-    /* padding: 0.2rem 0; */
-    padding-top: 0.2rem;
+.body {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  font-size: 1.1rem;
+  background-color: var(--bg-blue);
+  color: var(--white);
+  /* padding: 0.2rem 0; */
+  padding-top: 0.2rem;
 }
 
-.link{
-    color: var(--black);
+.link {
+  color: var(--black);
 }

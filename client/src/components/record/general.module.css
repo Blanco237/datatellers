@@ -22,6 +22,6 @@
     width: 100% !important;
   }
   .inputs.break {
-    grid-template-columns: 1fr ;
+    grid-template-columns: 1fr;
   }
 }

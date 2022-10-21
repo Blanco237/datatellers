@@ -1,6 +1,7 @@
 import React from "react";
 
 import Input from "../Input";
+
 import styles from "../general.module.css";
 
 const General = ({ onChange }) => {

@@ -1,7 +1,8 @@
 import React from "react";
 
-import styles from "../general.module.css";
 import Input from "../Input";
+
+import styles from "../general.module.css";
 
 const Address = ({ onChange }) => {
   return (

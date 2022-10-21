@@ -1,16 +1,15 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Alert } from "antd";
 
 import Input from "../../components/record/Input";
+import useUser from "./../../hooks/useUser";
+import { loginUser } from "./../../api/api";
 
 import styles from "./login.module.css";
-import { loginUser } from "./../../api/api";
-import useUser from './../../hooks/useUser';
-import { useNavigate } from "react-router-dom";
 import { LoadingOutlined } from "@ant-design/icons";
 
 const Login = () => {
-
   const [formData, setFormData] = useState({});
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
@@ -35,18 +34,16 @@ const Login = () => {
       if (res.error) {
         setErrorMessage(res.error);
         setErrorState(true);
-      }
-      else{
-        localStorage.setItem('drH-user-token', res);
+      } else {
+        localStorage.setItem("drH-user-token", res);
         refresh();
         setLoading(false);
-        navigator('/dash', { replace: true });
+        navigator("/dash", { replace: true });
       }
     } catch (e) {
       setErrorMessage(e.message);
       setErrorState(true);
-    }
-    finally{
+    } finally {
       setLoading(false);
     }
   };
@@ -77,7 +74,9 @@ const Login = () => {
             onChange={handleChange}
           />
         </div>
-        <button disabled={loading}>{loading? <LoadingOutlined /> : "Login" }</button>
+        <button disabled={loading}>
+          {loading ? <LoadingOutlined /> : "Login"}
+        </button>
       </form>
     </main>
   );
