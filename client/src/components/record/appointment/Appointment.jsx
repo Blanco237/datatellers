@@ -3,7 +3,7 @@ import React from "react";
 import styles from "../general.module.css";
 import Input from "../Input";
 
-const Appointment = ({ onChange, appt, firstTime, record, status, time }) => {
+const Appointment = ({ onChange }) => {
   return (
     <section className={styles.body}>
       <h3>Appointment Information</h3>
@@ -15,7 +15,6 @@ const Appointment = ({ onChange, appt, firstTime, record, status, time }) => {
           width={"20%"}
           onChange={onChange}
           required
-          value={appt}
         />
         <label htmlFor="firstTime" style={{ width: "20%" }}>
           <h4>First Time</h4>
@@ -25,7 +24,6 @@ const Appointment = ({ onChange, appt, firstTime, record, status, time }) => {
             name="firstTime"
             onChange={onChange}
             required
-            value={firstTime}
           >
             <option value="yes">Yes</option>
             <option value="no">No</option>
@@ -38,7 +36,6 @@ const Appointment = ({ onChange, appt, firstTime, record, status, time }) => {
           width={"20%"}
           onChange={onChange}
           required
-          value={record}
         />
         <label htmlFor="status" style={{ width: "20%" }}>
           <h4>Appointment Status</h4>
@@ -48,7 +45,6 @@ const Appointment = ({ onChange, appt, firstTime, record, status, time }) => {
             name="status"
             onChange={onChange}
             required
-            value={status}
           >
             <option value="pending">Pending</option>
             <option value="missed">Missed</option>
@@ -63,7 +59,6 @@ const Appointment = ({ onChange, appt, firstTime, record, status, time }) => {
           width={"20%"}
           onChange={onChange}
           required
-          value={time}
         />
       </div>
     </section>

@@ -3,7 +3,7 @@ import React from "react";
 import styles from "../general.module.css";
 import Input from "../Input";
 
-const Address = ({ onChange, address, city }) => {
+const Address = ({ onChange }) => {
   return (
     <section className={styles.body}>
       <h3>Address Information</h3>
@@ -14,7 +14,6 @@ const Address = ({ onChange, address, city }) => {
           name={"address"}
           width={"25%"}
           onChange={onChange}
-          value={address}
         />
         <Input
           label={"City"}
@@ -22,7 +21,6 @@ const Address = ({ onChange, address, city }) => {
           name={"city"}
           width={"20%"}
           onChange={onChange}
-          value={city}
         />
       </div>
     </section>

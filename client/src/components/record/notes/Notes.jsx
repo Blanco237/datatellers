@@ -2,7 +2,7 @@ import React from "react";
 
 import styles from "../general.module.css";
 
-const Notes = ({ onChange, before, after }) => {
+const Notes = ({ onChange }) => {
   return (
     <section className={styles.body}>
       <h3>Notes</h3>
@@ -13,7 +13,6 @@ const Notes = ({ onChange, before, after }) => {
             style={{ width: "100%" }}
             name="before"
             onChange={onChange}
-            value={before}
           />
         </label>
         <label htmlFor="after" style={{ width: "40%" }}>
@@ -22,7 +21,6 @@ const Notes = ({ onChange, before, after }) => {
             style={{ width: "100%" }}
             name="after"
             onChange={onChange}
-            value={after}
           />
         </label>
       </div>

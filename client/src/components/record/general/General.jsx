@@ -3,7 +3,7 @@ import React from "react";
 import Input from "../Input";
 import styles from "../general.module.css";
 
-const General = ({ onChange, code, name, gender, phone, email }) => {
+const General = ({ onChange }) => {
   return (
     <section className={styles.body}>
       <h3>General Information</h3>
@@ -13,7 +13,6 @@ const General = ({ onChange, code, name, gender, phone, email }) => {
           type={"text"}
           name={"code"}
           width={"10%"}
-          value={code}
           disabled
         />
         <Input
@@ -22,7 +21,6 @@ const General = ({ onChange, code, name, gender, phone, email }) => {
           name={"name"}
           width={"20%"}
           onChange={onChange}
-          value={name}
           required
         />
         <label htmlFor="gender" style={{ width: "20%" }}>
@@ -32,7 +30,6 @@ const General = ({ onChange, code, name, gender, phone, email }) => {
             style={{ width: "100%" }}
             name="gender"
             onChange={onChange}
-            value={gender}
             required
           >
             <option value="male">Male</option>
@@ -45,7 +42,6 @@ const General = ({ onChange, code, name, gender, phone, email }) => {
           name={"phone"}
           width={"20%"}
           onChange={onChange}
-          value={phone}
           maxLength={9}
         />
         <Input
@@ -54,7 +50,6 @@ const General = ({ onChange, code, name, gender, phone, email }) => {
           name={"email"}
           width={"20%"}
           onChange={onChange}
-          value={email}
         />
       </div>
     </section>
