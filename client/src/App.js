@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import 'antd/dist/antd.css';
 
@@ -13,19 +14,23 @@ import UserProvider from './context/UserContext';
 
 const App = () => {
 
+    const client = new QueryClient();
+
     return (
         <UserProvider >
-            <Router>
-                <Header />
-                <Routes>
-                    <Route path={'/'} element={<Navigate to='/dash' />} />
-                    <Route path={'/login'} element={<Login />} />
-                    <Route path={'/dash'} element={<Dashboard />} />
-                    <Route path={'/new'} element={<NewRecord />} />
-                    <Route path={'/edit'} element={<EditRecord />} />
-                </Routes>
-            </Router>
-            <Footer />
+            <QueryClientProvider client={client}>
+                <Router>
+                    <Header />
+                    <Routes>
+                        <Route path={'/'} element={<Navigate to='/dash' />} />
+                        <Route path={'/login'} element={<Login />} />
+                        <Route path={'/dash'} element={<Dashboard />} />
+                        <Route path={'/new'} element={<NewRecord />} />
+                        <Route path={'/edit/:code'} element={<EditRecord />} />
+                    </Routes>
+                </Router>
+                <Footer />
+            </QueryClientProvider>
         </UserProvider>
     )
 }
