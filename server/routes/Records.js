@@ -101,5 +101,25 @@ router.post('/update', validateRequest, async (req, res) => {
     }
 })
 
+router.post('/saveBulk', async (req, res) => {
+    const data = req.body;
+    try{
+        for(let i = 0; i < data.length; i++) {
+            const record = data[i];
+            record.code = await getCode();
+            record.firstTime = record.firstTime.toLowerCase() === "yes" ? true : false;
+            record.phone = formatPhoneNumber(record.phone);
+            record.gender = record.gender.toLowerCase();
+            
+            await Records.create(record);
+        }
+        
+        res.json({success: "All Records Added"});
+    }
+    catch(e){
+        res.status(400).json({error: e.message});
+    }
+})
+
 
 module.exports = router;
