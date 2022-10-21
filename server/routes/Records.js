@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
+const validateRequest = require('../middlewares/Auth');
+
 const { Records } = require('../models');
 
 const pad = (n) => {
@@ -34,7 +36,7 @@ const formatPhoneNumber = (phone) => {
     return tPhone;
 }
 
-router.post('/save', async (req, res) => {
+router.post('/save', validateRequest, async (req, res) => {
     const data = req.body;
     data.code = await getCode();
     data.firstTime = data.firstTime.toLowerCase() === "yes" ? true : false;
@@ -45,12 +47,11 @@ router.post('/save', async (req, res) => {
         res.json(record);
     }
     catch (e) {
-        console.error(e);
         res.status(400).json({ error: e.message });
     }
 });
 
-router.get('/all', async (req, res) => {
+router.get('/all', validateRequest, async (req, res) => {
     try {
         const records = await Records.findAll();
         res.json(records);
@@ -60,7 +61,7 @@ router.get('/all', async (req, res) => {
     }
 });
 
-router.get('/byCode/:code', async (req, res) => {
+router.get('/byCode/:code', validateRequest, async (req, res) => {
     const { code } = req.params;
     try {
         const record = await Records.findByPk(code);
@@ -71,7 +72,7 @@ router.get('/byCode/:code', async (req, res) => {
     }
 })
 
-router.get('/status/:status', async (req, res) => {
+router.get('/status/:status', validateRequest, async (req, res) => {
     const { status } = req.params;
     try {
         const count = await Records.count({
@@ -85,7 +86,7 @@ router.get('/status/:status', async (req, res) => {
     }
 });
 
-router.post('/update', async (req, res) => {
+router.post('/update', validateRequest, async (req, res) => {
     const data = req.body;
     try {
         const record = Records.update(data, {
