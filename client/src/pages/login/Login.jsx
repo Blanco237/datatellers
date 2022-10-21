@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { Alert } from "antd";
 
 import Input from "../../components/record/Input";
@@ -17,7 +17,7 @@ const Login = () => {
 
   const navigator = useNavigate();
 
-  const { refresh } = useUser();
+  const { user, refresh } = useUser();
 
   const handleChange = (e) => {
     setFormData({
@@ -47,6 +47,10 @@ const Login = () => {
       setLoading(false);
     }
   };
+
+  if(user){
+    return <Navigate to={'/dash'}  />
+  }
 
   return (
     <main className={styles.body}>
