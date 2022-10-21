@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import { Table as T, Button, Input, Space } from "antd";
 import { useQuery } from '@tanstack/react-query';
 
-import { SearchOutlined } from "@ant-design/icons";
+import { ManOutlined, SearchOutlined, WomanOutlined } from "@ant-design/icons";
 
 import "./table.css";
 import styles from "./table.module.css";
@@ -132,7 +132,8 @@ const Table = () => {
       dataIndex: "code",
       key: "code",
       ...getColumnSearchProps("code"),
-      responsive: ['lg']
+      responsive: ['lg'],
+      sorter: (a, b) => (a.code > b.code ? 1 : -1)
     },
     {
       title: "Address",
@@ -149,7 +150,14 @@ const Table = () => {
         { text: "Female", value: "female" },
       ],
       onFilter: (value, record) => record.gender === value,
-      responsive: ['lg']
+      responsive: ['lg'],
+      render: (gender) => {
+        const genderObj = {
+          "male" : <ManOutlined />,
+          "female" : <WomanOutlined />
+        }
+        return <span>{gender.toUpperCase()} {genderObj[gender]}</span>;
+      }
     },
     {
       title: "Phone",
