@@ -30,6 +30,9 @@ const NewRecord = () => {
       top: 0,
       behavior: 'smooth'
     })
+    if(!user) {
+      navigator('/login');
+    }
   }, []);
 
   if (!user) {
