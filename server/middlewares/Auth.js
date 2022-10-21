@@ -10,6 +10,7 @@ const validateRequest = (req, res, next) => {
     try {
         const validToken = verify(token, process.env.JWT_SECRET);
         if (validToken) {
+            req.user = validToken;
             return next();
         }
         else {
