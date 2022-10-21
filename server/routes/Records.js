@@ -24,11 +24,11 @@ const getCode = async () => {
 }
 
 const formatPhoneNumber = (phone) => {
-    if(!phone) {
+    if (!phone) {
         return;
     }
-    let tPhone = phone.replace('+','');
-    if(tPhone.length > 9){
+    let tPhone = phone.replace('+', '');
+    if (tPhone.length > 9) {
         return tPhone.slice(3);
     }
     return tPhone;
@@ -73,15 +73,30 @@ router.get('/byCode/:code', async (req, res) => {
 
 router.get('/status/:status', async (req, res) => {
     const { status } = req.params;
-    try{
+    try {
         const count = await Records.count({
             where: {
                 status
             }
         });
         res.json(count);
-    }catch(e){
-        res.status(400).json({error: e.message});
+    } catch (e) {
+        res.status(400).json({ error: e.message });
+    }
+});
+
+router.post('/update', async (req, res) => {
+    const data = req.body;
+    try {
+        const record = Records.update(data, {
+            where: {
+                code: data.code
+            }
+        })
+        res.json(record);
+    }
+    catch (e) {
+        res.status(400).json({ error: e.message })
     }
 })
 
