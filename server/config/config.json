@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "root",
+    "username": "datatellers237",
     "password": "iGetInt0pc.com!",
     "database": "datatellers",
-    "host": "127.0.0.1",
+    "host": "db4free.net",
     "dialect": "mysql"
   },
   "test": {
@@ -14,9 +14,9 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "newsroom237",
+    "username": "datatellers237",
     "password": "iGetInt0pc.com!",
-    "database": "newsroom",
+    "database": "datatellers",
     "host": "db4free.net",
     "dialect": "mysql"
   }
