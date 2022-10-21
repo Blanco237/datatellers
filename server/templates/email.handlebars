@@ -12,7 +12,7 @@
     />
     <title>New Appointment</title>
 
-    <style>
+        <style>
       * {
         margin: 0;
         padding: 0;
@@ -21,11 +21,6 @@
       body {
         font-family: "DM Sans", sans-serif;
         width: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 1rem;
         padding: 1rem 0.5rem;
         border: 1px solid rgb(197, 197, 197);
         border-radius: 10px;
@@ -40,19 +35,18 @@
       }
       section {
         width: 100%;
-        flex-direction: column;
-        gap: 0.7rem;
         padding: 0 0.5rem;
-        display: flex;
       }
 
       .item {
         width: 100%;
+        margin-bottom: 1rem;
         background-color: rgb(180, 172, 172);
         padding: 0.2rem 0.5rem;
         border-radius: 10px;
       }
-      .section p {
+      section>p {
+        margin-bottom: 1rem;
         text-align: center;
       }
 
@@ -60,10 +54,11 @@
         padding: 0.3rem 1.1rem;
         font-weight: 500;
         border-radius: 5px;
+        text-decoration: none;
         background-color: #ba6570;
         border: none;
         cursor: pointer;
-        color: #f7f7f7;
+        color: #f7f7f7 !important;
         box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
         transition: all 300ms ease-in-out;
       }
@@ -71,6 +66,12 @@
       a:hover {
         background-color: #eececf;
         color: #423a38;
+      }
+
+      @media screen and (min-width: 768px) {
+        .item {
+            width: 30%;
+        }
       }
     </style>
   </head>
