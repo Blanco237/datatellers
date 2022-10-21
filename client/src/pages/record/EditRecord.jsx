@@ -52,6 +52,9 @@ const EditRecord = () => {
       top: 0,
       behavior: 'smooth'
     })
+    if(!user) {
+      navigator('/login');
+    }
   }, []);
 
   const handleChange = (e) => {
@@ -91,6 +94,17 @@ const EditRecord = () => {
     }
   }
 
+  const goBack = () => {
+    if(filled){
+      const res = window.confirm("Are you sure you want to abandon current Record?");
+      if(res){
+        navigator(-1);
+      }
+      return;
+    }
+
+    navigator(-1);
+  }
 
 
   if(!user) {
@@ -117,7 +131,7 @@ const EditRecord = () => {
         <button disabled={loading}>{loading? <LoadingOutlined /> : "Update" }</button>
         </section>
       </form>
-      <button className={styles.return} onClick={() => navigator(-1)}>
+      <button className={styles.return} onClick={goBack}>
         <ArrowLeftOutlined />
       </button>
     </main>
