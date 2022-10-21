@@ -101,7 +101,7 @@ const NewRecord = () => {
       <section className={styles.header}>
         <h1>New Record</h1>
         <div className={styles.divider}></div>
-        {type && <Alert message={message} type={type} showIcon closable />}
+        {type && <Alert message={message} type={type} showIcon closable afterClose={() => {setType(null)}}  />}
       </section>
       <form className={styles.form} onSubmit={handleSubmit}>
         <General onChange={handleChange} />
