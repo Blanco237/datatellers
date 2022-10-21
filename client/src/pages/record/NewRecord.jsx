@@ -1,12 +1,12 @@
 import { Alert, Divider } from "antd";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Address from "../../components/record/address/Address";
 import Appointment from "../../components/record/appointment/Appointment";
 import General from "../../components/record/general/General";
 
 import styles from "./record.module.css";
 import Notes from "./../../components/record/notes/Notes";
-import { ArrowLeftOutlined, EyeTwoTone, LoadingOutlined } from "@ant-design/icons";
+import { ArrowLeftOutlined, LoadingOutlined } from "@ant-design/icons";
 import useUser from "./../../hooks/useUser";
 import { Navigate, useNavigate } from "react-router-dom";
 import { saveRecord } from './../../api/api';
@@ -24,6 +24,13 @@ const NewRecord = () => {
 
   const { user } = useUser();
   const navigator = useNavigate();
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
+  }, []);
 
   if (!user) {
     <Navigate to={"/login"} />;
@@ -92,13 +99,13 @@ const NewRecord = () => {
         {type && <Alert message={message} type={type} showIcon closable  />}
       </section>
       <form className={styles.form} onSubmit={handleSubmit}>
-        <General onChange={handleChange} {...formData} code={formData.code} name={formData.name} />
+        <General onChange={handleChange} />
         <Divider />
-        <Appointment onChange={handleChange} {...formData} />
+        <Appointment onChange={handleChange} />
         <Divider />
-        <Address onChange={handleChange} {...formData} />
+        <Address onChange={handleChange} />
         <Divider />
-        <Notes onChange={handleChange} {...formData} />
+        <Notes onChange={handleChange} />
         <Divider />
         <section className={styles.save}>
           <button disabled={loading}>{loading? <LoadingOutlined /> : "Save" }</button>
