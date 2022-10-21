@@ -27,6 +27,10 @@ const sendMail = (data) => {
     transporter.use("compile", hbs(handlebarOptions));
 
     const mailOptions = {
+        from: {
+            name: "DrNG - DataTellers",
+            address: process.env.USER_EMAIL
+        },
         to: 'asongrandy9@gmail.com',
         subject: "New Appointment",
         template: "email",
