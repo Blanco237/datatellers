@@ -10,7 +10,7 @@ const UserProvider = ({ children }) => {
 
     const fetchUser = async () => {
         const userToken = localStorage.getItem('drH-user-token');
-        if (!userToken || userToken == "undefined") {
+        if (!userToken || userToken === "undefined") {
             setUser(null);
             return;
         }
