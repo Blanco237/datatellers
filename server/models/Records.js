@@ -1,16 +1,16 @@
 module.exports = (sequelize, DataTypes) => {
-    
+
     const Records = sequelize.define("Records", {
         code: {
             type: DataTypes.STRING,
             primaryKey: true
         },
         name: {
-            type: DataTypes.STRING, 
+            type: DataTypes.STRING,
             allowNull: false
         },
         gender: {
-            type: DataTypes.STRING, 
+            type: DataTypes.STRING,
             allowNull: false
         },
         phone: {
@@ -52,11 +52,11 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.TEXT
         }
     },
-    {
-        tableName: "Records",
-        timestamps: true, 
-        paranoid: true
-    }
+        {
+            tableName: "Records",
+            timestamps: true,
+            paranoid: true
+        }
     )
 
     return Records;

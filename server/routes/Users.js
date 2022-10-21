@@ -16,11 +16,11 @@ const JWT_SECRET = process.env.JWT_SECRET;
 
 router.post('/check', async (req, res) => {
     const { token } = req.headers;
-    try{
+    try {
         const decoded = await jwt.verify(token, JWT_SECRET);
         res.json(decoded);
-    }catch(e) {
-        res.status(400).json({error: "Invalid User"});
+    } catch (e) {
+        res.status(400).json({ error: "Invalid User" });
     }
 });
 
@@ -31,11 +31,11 @@ router.post('/register', async (req, res) => {
     const salt = await bcrypt.genSalt(encLevel);
     let hashedPassword = await bcrypt.hash(password, salt);
     data.password = hashedPassword;
-    try{
+    try {
         await Users.create(data);
         const key = jwt.sign(JSON.stringify(data), JWT_SECRET);
         res.json(key);
-    }catch(e){
+    } catch (e) {
         console.error(e);
         res.status(400).json({ error: e.message });
     }
@@ -49,18 +49,18 @@ router.post('/login', async (req, res) => {
         }
     });
 
-    if(data){
+    if (data) {
         const match = await bcrypt.compare(password, data.password);
-        if(match){
+        if (match) {
             const key = jwt.sign(JSON.stringify(data.dataValues), JWT_SECRET);
             res.json(key);
         }
         else {
-            res.json({error : `Wrong password for ${username}`});
+            res.json({ error: `Wrong password for ${username}` });
         }
     }
-    else{
-        res.json({ error : 'User Not Found'});                                                                   
+    else {
+        res.json({ error: 'User Not Found' });
     }
 }
 );
