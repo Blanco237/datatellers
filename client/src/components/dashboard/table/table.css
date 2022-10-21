@@ -47,9 +47,9 @@
     width: 7rem;
   }
   
-  /* Age Header */
+  /* Address Header */
   .ant-table-thead > tr > th:nth-child(3) {
-    width: 5rem;
+    width: 7rem;
   }
   
   /* Gender Header */
@@ -59,7 +59,7 @@
   
   /* Phone Header */
   .ant-table-thead > tr > th:nth-child(5) {
-    width: 9rem;
+    width: 7rem;
   }
   
   /* Status Header */
@@ -125,9 +125,9 @@
     width: 7rem;
   }
   
-  /* Age Column */
+  /* Address Column */
    .ant-table-tbody .ant-table-row .ant-table-cell:nth-child(3) {
-    width: 5rem;
+    width: 7rem;
   }
   
   /* Gender Column */
@@ -137,7 +137,7 @@
   
   /* Phone Column */
    .ant-table-tbody .ant-table-row .ant-table-cell:nth-child(5) {
-    width: 9rem;
+    width: 7rem;
   }
   
   /* Status Column */
