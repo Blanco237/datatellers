@@ -25,6 +25,15 @@ router.post('/check', async (req, res) => {
 });
 
 
+// {
+// 	"username" : "Ngwashi",
+// 	"password" : "ng-admin237"
+// }
+// {
+// 	"username" : "Neba",
+// 	"password" : "ng-sec237"
+// }
+
 router.post('/register', async (req, res) => {
     const { password } = req.body;
     const data = req.body;
