@@ -20,25 +20,25 @@ const Header = () => {
 
   return (
     <>
-    <header className={styles.body}>
-      <section className={styles.headline}>DrNG | PATIENTS</section>
-      {user && (
-        <>
-        <button onClick={logOut} className={styles.logOut}>
-          <span>Logout</span>
-          <span>
-            <LogoutOutlined />
-          </span>
-        </button>
-        <button className={styles.add} onClick={() => setShowModal(true)} >
-          <UserAddOutlined />
-        </button>
-        </>
-      )}
-    </header>
-    {
-      showModal && <Register closeModal={() => setShowModal(false)} />
-    }
+      <header className={styles.body}>
+        <section className={styles.headline}>DrNG | PATIENTS</section>
+        {user && (
+          <>
+            <button onClick={logOut} className={styles.logOut}>
+              <span>Logout</span>
+              <span>
+                <LogoutOutlined />
+              </span>
+            </button>
+            {user.role === "admin" && (
+              <button className={styles.add} onClick={() => setShowModal(true)}>
+                <UserAddOutlined />
+              </button>
+            )}
+          </>
+        )}
+      </header>
+      {showModal && <Register closeModal={() => setShowModal(false)} />}
     </>
   );
 };
