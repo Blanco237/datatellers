@@ -3,6 +3,8 @@ const router = express.Router();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken')
 
+const validateRequest = require('../middlewares/Auth');
+
 require('dotenv').config();
 
 const { Users } = require('../models');
@@ -34,7 +36,11 @@ router.post('/check', async (req, res) => {
 // 	"password" : "ng-sec237"
 // }
 
-router.post('/register', async (req, res) => {
+router.post('/register', validateRequest , async (req, res) => {
+    if(req.user.role !== "admin"){
+        res.json({error: "Request Not Authorized"});
+        return;
+    }
     const { password } = req.body;
     const data = req.body;
     const salt = await bcrypt.genSalt(encLevel);
