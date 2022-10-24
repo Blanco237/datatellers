@@ -3,6 +3,8 @@ import { Alert, Divider } from "antd";
 import Input from "../../record/Input";
 
 import styles from "./register.module.css";
+import { registerUser } from "../../../api/api";
+import { LoadingOutlined } from '@ant-design/icons';
 
 const Register = ({ closeModal }) => {
   const [formData, setFormData] = useState({
@@ -10,6 +12,7 @@ const Register = ({ closeModal }) => {
   });
   const [message, setMessage] = useState(null);
   const [type, setType] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setFormData({
@@ -18,12 +21,32 @@ const Register = ({ closeModal }) => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (formData.password !== formData.confirmPassword) {
       setMessage("Passwords Don't Match");
       setType("error");
       return;
+    }
+    try{
+      setLoading(true);
+      const res = await registerUser(formData);
+      if(res.error){
+        setMessage(res.error);
+        setType('error');
+        return;
+      }
+      setMessage("New User Created");
+      setType("success");
+      setTimeout(closeModal, 2500);
+    }
+    catch(e){
+      setMessage(e.message);
+      setType('error');
+    }
+    finally{
+      setLoading(false);
+      e.target.reset();
     }
   };
 
@@ -79,7 +102,7 @@ const Register = ({ closeModal }) => {
             <option value={"admin"}>Admin</option>
           </select>
         </label>
-        <button>Register</button>
+        <button disabled={loading}>{loading? <LoadingOutlined /> : "Register" }</button>
       </form>
     </section>
   );
