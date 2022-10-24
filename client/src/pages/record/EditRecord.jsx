@@ -109,9 +109,9 @@ const EditRecord = () => {
     navigator(-1);
   };
 
-  if (!user) {
-    return <Navigate to="/login" />;
-  }
+  // if (!user) {
+  //   return <Navigate to="/login" />;
+  // }
 
   return (
     <main className={styles.body}>
