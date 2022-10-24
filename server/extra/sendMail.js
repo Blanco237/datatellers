@@ -41,7 +41,6 @@ const sendMail = (data, email) => {
             status: data.status,
             appt: data.appt,
             time: data.time,
-            link: `https://datatellers.vercel.app/edit/${data.code}`
         }
     }
 
