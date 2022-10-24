@@ -1,4 +1,5 @@
 const express = require('express');
+const sendEmails = require('../extra/sendMail');
 const router = express.Router();
 
 const validateRequest = require('../middlewares/Auth');
@@ -38,12 +39,16 @@ const formatPhoneNumber = (phone) => {
 
 router.post('/save', validateRequest, async (req, res) => {
     const data = req.body;
+    const { role } = req.user;
     data.code = await getCode();
     data.firstTime = data.firstTime.toLowerCase() === "yes" ? true : false;
     data.phone = formatPhoneNumber(data.phone);
 
     try {
         const record = await Records.create(data);
+        if(role === "secretary"){
+            await sendEmails(record);
+        }
         res.json(record);
     }
     catch (e) {
