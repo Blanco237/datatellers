@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const Axios = axios.create({
-    baseURL: 'http://localhost:5500',
+    baseURL: 'https://datatellers.onrender.com/',
 });
 
 export const loginUser = async (user) => {
