@@ -1,10 +1,11 @@
 const nodemailer = require('nodemailer');
 const hbs = require('nodemailer-express-handlebars');
 const path = require('path');
+const { Users } = require('../models');
 require('dotenv').config();
 
 
-const sendMail = (data) => {
+const sendMail = (data, email) => {
 
     const transporter = nodemailer.createTransport({
         service: 'gmail',
@@ -16,7 +17,7 @@ const sendMail = (data) => {
 
     const handlebarOptions = {
         viewEngine: {
-            extName : ".handlebars",
+            extName: ".handlebars",
             partialsDir: path.resolve('./templates'),
             defaultLayout: false,
         },
@@ -31,7 +32,7 @@ const sendMail = (data) => {
             name: "DrNG - DataTellers",
             address: process.env.USER_EMAIL
         },
-        to: 'asongrandy9@gmail.com',
+        to: email,
         subject: "New Appointment",
         template: "email",
         context: {
@@ -45,13 +46,29 @@ const sendMail = (data) => {
     }
 
     transporter.sendMail(mailOptions, (err, info) => {
-        if(err){
+        if (err) {
             console.error(err);
         }
-        else{
-            console.log("Email sent: " + info.response);
+        else {
+            console.log(`Email sent to: ${email}  Info: ${info.response}`);
         }
     })
 }
 
-module.exports = sendMail;
+const sendEmails = async (data) => {
+    try {
+        const admins = await Users.findAll({
+            where: {
+                role: 'admin'
+            }
+        });
+        admins.forEach((admin) => {
+            sendMail(data, admin.email);
+        })
+    }
+    catch (e) {
+        console.error(e);
+    }
+}
+
+module.exports = sendEmails;
