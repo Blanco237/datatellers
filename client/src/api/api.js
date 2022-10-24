@@ -9,6 +9,15 @@ export const loginUser = async (user) => {
     return res.data;
 }
 
+export const registerUser = async (data) => {
+    const res = await Axios.post('/users/register', data, {
+        headers: {
+            token: localStorage.getItem('drH-user-token')
+        }
+    });
+    return res.data;
+}
+
 /**
  * Gets a User Object from jwt token
  * @param {string} token Token to check
